@@ -83,7 +83,10 @@ public class AppleServiceImpl implements IAppleService {
     public Basket createBasket() {
 
         Basket basket = new Basket();
-        basketRepository.save(basket);
+
+        return basketRepository.save(basket);
+
+
     }
 
     @Override
