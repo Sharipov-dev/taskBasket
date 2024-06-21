@@ -4,6 +4,7 @@ import apples.demo.entity.Good;
 import apples.demo.exception.NotEnoughGoodsException;
 import apples.demo.repo.GoodRepository;
 import apples.demo.service.IGoodService;
+import jakarta.annotation.PostConstruct;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,8 @@ public class GoodServiceImpl implements IGoodService {
 
     private Map<Long, Object> goodMap = new HashMap<>();
 
-    public GoodServiceImpl(){
+    @PostConstruct
+    public void init(){
         for(Good good : goodRepository.findAll()){
             goodMap.put(good.getId(), new Object());
         }
